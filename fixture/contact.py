@@ -7,7 +7,7 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("home").click()
 
-    def add_new(self, contact):
+    def create(self, contact):
         wd = self.app.wd
         # Add new contact
         wd.find_element_by_link_text("add new").click()
@@ -25,7 +25,7 @@ class ContactHelper:
         wd.switch_to_alert().accept()
         self.open_home_page()
 
-    def modify_contact(self, contact):
+    def modify(self, contact):
         wd = self.app.wd
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         self.fill_contact_fields(contact)
