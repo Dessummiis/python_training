@@ -24,10 +24,10 @@ class Application:
         wd = self.wd
         wd.get("http://localhost/addressbook/")
 
-    def return_to_main_page(self):
+    def open_main_page(self):
         wd = self.wd
-        # Return to main page
-        wd.find_element_by_link_text("home page").click()
+        if not (wd.current_url.endswith("/addressbook") and len(wd.find_elements_by_name("add")) > 0):
+            wd.find_element_by_link_text("home").click()
 
     def destroy(self):
         self.wd.quit()
