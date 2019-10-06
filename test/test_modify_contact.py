@@ -6,7 +6,7 @@ def test_modify_contact(app):
     if app.contact.count() == 0:
         app.contact.create(Contact(first_name="test"))
     app.contact.modify_first_contact(
-        Contact(first_name="edit_fname", middle_name="edit_mname", lastname="edit_lnmame", nickname="edit_nickname",
+        Contact(first_name="edit_fname", middle_name="edit_mname", last_name="edit_lnmame", nickname="edit_nickname",
                 title="edit_title", company="edit_company", address="edit_addr1",
                 phone_home="edit_th", phone_mobile="edit_tm", phone_work="edit_tw", phone_fax="edit_fax",
                 email_1="edit_e1", email_2="edit_e2", email_3="edit_e3",

@@ -1,5 +1,6 @@
 from model.contact import Contact
 
+
 class ContactHelper:
 
     def __init__(self, app):
@@ -37,7 +38,7 @@ class ContactHelper:
     def fill_contact_fields(self, contact):
         self.change_field_value("firstname", contact.first_name)
         self.change_field_value("middlename", contact.middle_name)
-        self.change_field_value("lastname", contact.lastname)
+        self.change_field_value("lastname", contact.last_name)
         self.change_field_value("nickname", contact.nickname)
         self.change_field_value("title", contact.title)
         self.change_field_value("company", contact.company)
@@ -70,9 +71,10 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_main_page()
         contacts = []
-        for element in wd.find_elements_by_name("selected[]"):
-            text = element.get_attribute("title")
-            id = element.get_attribute("value")
-            contacts.append(Contact(name=text, id=id))
+        for element in wd.find_elements_by_xpath("//tr[@name='entry']"):
+            firstname_text = element.find_element_by_xpath(".//td[3]").text
+            lastname_text = element.find_element_by_xpath(".//td[2]").text
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            contacts.append(Contact(first_name=firstname_text, last_name=lastname_text, id=id))
         return contacts
 
