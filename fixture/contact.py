@@ -147,6 +147,9 @@ class ContactHelper:
     def clear(self, s):
         return re.sub("[() -]", "", s)
 
+    def clear_email(self, s):
+        return s
+
     def merge_phones_like_on_home_page(self, contact):
         return "\n".join(filter(lambda x: x != "",
                                 map(lambda x: self.clear(x),
@@ -156,6 +159,6 @@ class ContactHelper:
 
     def merge_emails_like_on_home_page(self, contact):
         return "\n".join(filter(lambda x: x != "",
-                                map(lambda x: self.clear(x),
+                                map(lambda x: self.clear_email(x),
                                     filter(lambda x: x is not None,
                                            [contact.email_1, contact.email_2, contact.email_3]))))
