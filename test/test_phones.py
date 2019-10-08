@@ -14,4 +14,3 @@ def test_phones_on_contact_view_page(app):
     assert contact_from_view_page.phone_mobile == contact_from_edit_page.phone_mobile
     assert contact_from_view_page.phone_work == contact_from_edit_page.phone_work
     assert contact_from_view_page.secondary_phone == contact_from_edit_page.secondary_phone
-
