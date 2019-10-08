@@ -110,8 +110,8 @@ class ContactHelper:
                 all_emails = cells[4].text
                 all_phones = cells[5].text
                 self.contact_cache.append(Contact(first_name=firstname_text, last_name=lastname_text, address=address,
-                                                  id=id, all_phones_from_homepage=all_phones,
-                                                  all_emails_from_homepage=all_emails))
+                                                  id=id, all_phones=all_phones,
+                                                  all_emails=all_emails))
         return list(self.contact_cache)
 
     def get_contact_info_from_edit_page(self, index):
