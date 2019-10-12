@@ -13,7 +13,7 @@ def random_string(prefix, maxlen):
 
 
 try:
-    opts, args = getopt.getopt(sys.argv[1:], "n:f", ["number of contacts", "file"])
+    opts, args = getopt.getopt(sys.argv[1:], "n:f:", ["number of contacts", "file"])
 except getopt.GetoptError as err:
     getopt.usage()
     sys.exit(2)
@@ -21,6 +21,11 @@ except getopt.GetoptError as err:
 n = 5
 f = "data/contacts.json"
 
+for o, a in opts:
+    if o == "-n":
+        n = int(a)
+    elif o == "-f":
+        f = a
 
 testdata = [Contact(first_name="", middle_name="",last_name="", address="", phone_home="", phone_mobile="",
             phone_work="", secondary_phone="", email_1="", email_2="", email_3="")] + [
@@ -34,5 +39,5 @@ testdata = [Contact(first_name="", middle_name="",last_name="", address="", phon
 
 file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", f)
 
-with open(file, "w") as f:
-    f.write(json.dumps(testdata, default=lambda x: x.__dict__, indent=2))
+with open(file, "w") as out:
+    out.write(json.dumps(testdata, default=lambda x: x.__dict__, indent=2))
