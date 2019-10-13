@@ -176,3 +176,6 @@ class ContactHelper:
                                 map(lambda x: self.clear_email(x),
                                     filter(lambda x: x is not None,
                                            [contact.email_1, contact.email_2, contact.email_3]))))
+
+    def clean(self, contact):
+        return Contact(id=contact.id, first_name=contact.first_name.strip(), last_name=contact.last_name.strip())
