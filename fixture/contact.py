@@ -60,9 +60,9 @@ class ContactHelper:
 
     def delete_contact_from_group(self, contact_id, group_id):
         wd = self.app.wd
+        self.choose_group_to_delete_contact(group_id)
         self.select_contact_by_id(contact_id)
-        self.choose_group_to_add_contact(group_id)
-        wd.find_element_by_name("add").click()
+        wd.find_element_by_name("remove").click()
         self.app.open_main_page()
         self.contact_cache = None
 
@@ -70,6 +70,11 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_name("to_group").click()
         wd.find_element_by_xpath("(//option[@value='%s'])[2]" % id).click()
+
+    def choose_group_to_delete_contact(self, id):
+        wd = self.app.wd
+        wd.find_element_by_name("group").click()
+        wd.find_element_by_xpath("(//option[@value='%s'])[1]" % id).click()
 
     def select_first_contact(self):
         wd = self.app.wd
