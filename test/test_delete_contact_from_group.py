@@ -27,7 +27,7 @@ def test_add_contact(app, orm):
     # Удалить контакт из группы
     app.contact.delete_contact_from_group(contact.id, group.id)
     # Проверить, что контакт удален
-    if not orm.check_if_contact_is_in_group(group, contact):
+    if orm.check_if_contact_is_in_group(group, contact):
         raise Exception('Contact was not deleted from group')
 
 
