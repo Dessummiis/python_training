@@ -104,3 +104,6 @@ env1/
 
 # mypy
 .mypy_cache/
+
+
+allure-results/
