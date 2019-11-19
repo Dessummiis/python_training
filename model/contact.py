@@ -38,7 +38,7 @@ class Contact:
 
     def __eq__(self, other):
         # Проверка по имени и фамилии, без учета id
-        if self.full_assert and other.full_assert is None:
+        if self.full_assert or other.full_assert is None:
             return (self.id is None or other.id is None or self.id == other.id) \
                    and self.first_name == other.first_name and self.last_name == other.last_name
         else:
