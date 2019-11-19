@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from model.group import Group
 import allure
-import pytest
 
 
 def test_add_group(app, db, json_groups):
