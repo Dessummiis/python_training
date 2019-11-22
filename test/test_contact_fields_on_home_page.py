@@ -14,5 +14,9 @@ def test_contact_fields_on_home_page(app, orm, db):
         # склеить номера телефонов и email-ы для контактов из db
         contacts_from_db[index].all_phones = app.contact.merge_phones_like_on_home_page(contact)
         contacts_from_db[index].all_emails = app.contact.merge_emails_like_on_home_page(contact)
-        # сравнить контакт из db с контактом из ui для соответствующего индекса
+        # сравнить контакт по id*, фамилии и имени из db с контактом из ui для соответствующего индекса
         assert contacts_from_db[index] == contacts_from_home_page[index]
+        # сравнить адреса, телефоны, email-ы
+        assert contacts_from_db[index].address == contacts_from_home_page[index].address
+        assert contacts_from_db[index].all_phones == contacts_from_home_page[index].all_phones
+        assert contacts_from_db[index].all_emails == contacts_from_home_page[index].all_emails
